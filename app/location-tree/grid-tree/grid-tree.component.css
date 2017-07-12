@@ -1,0 +1,37 @@
+table {
+    max-height: 350px;
+}
+
+table, th, td  {
+    border: 1px black solid;
+}
+
+th, td  {
+    padding: 2px 10px;
+    white-space: nowrap;
+}
+
+thead, tbody {
+    width: 100%;
+}
+
+thead_copy, tbody_copy {
+    display: block;
+    width: 100%;
+}
+
+tbody_copy {
+    height: 350px;
+    overflow-y: auto;    /* Trigger vertical scroll    */
+    overflow-x: hidden;  /* Hide the horizontal scroll */
+}
+
+
+
+.stateName {
+    padding: 0px 10px 0px 30px;
+}
+
+.cityName {
+    padding: 0px 10px 0px 50px;
+}

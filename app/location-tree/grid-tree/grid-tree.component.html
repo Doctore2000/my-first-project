@@ -1,0 +1,31 @@
+
+<!--button (click)="callDebugger()">D</button-->
+
+<div #aLevel="var" [var]="0"></div>
+
+<ng-template #rowDataTemplate let-data>
+    <tr *ngIf="data">
+        <td *ngFor="let column of columns; let i=index"><!-- div *ngIf="i == 0">+++</div -->{{data[column.index]}}</td>
+    </tr>
+</ng-template>
+
+
+<table cellpading="2px" class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th *ngFor="let column of columns">{{column.name}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <ng-template #recursiveList let-node ngFor [ngForOf]="rootAsArray">
+            <!-- div #aLevel="var" [var]="levelUp()"></div -->
+
+            <ng-container *ngTemplateOutlet="rowDataTemplate; context:{ $implicit: node.data }"></ng-container>
+            <ng-template let-child ngFor [ngForOf]="node.children">                
+                <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: child }"></ng-container>
+            </ng-template>
+            <!-- div #aLevel="var" [var]="levelDown()"></div -->
+        </ng-template>
+    </tbody>
+</table>

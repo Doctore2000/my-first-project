@@ -1,0 +1,27 @@
+
+.treeRow {
+    padding: 0px 0px 2px 10px;
+    border: 0px black solid;
+}
+
+.treeRow .label{
+    display: inline-block;
+}
+
+.actionButton {
+    border: none;
+    background: url(./icons8-Plus-48.png);
+    background-size: cover;
+}
+
+.actionButton.expanded {
+    background: url(./icons8-Minus-48.png);
+    background-size: cover;
+}
+
+.placeholder {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin: 0px;
+}

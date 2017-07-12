@@ -1,0 +1,22 @@
+<div [class.treeRow]="isVilible" *ngIf="treeNode">
+    <div *ngIf="isVilible">
+        <button 
+            *ngIf="!treeNode.isLeaf"
+            class="placeholder actionButton"
+            [class.expanded]="treeNode.isExpanded" 
+            (click)="toggleExpanded()" 
+            >
+        </button>
+        <div 
+            *ngIf="treeNode.isLeaf"
+            class="placeholder">
+        </div>
+        <div class="label">{{treeNode.label}}</div>
+        <!--button (click)="callDebugger()">D</button-->
+    </div>
+    
+    
+    <div *ngIf="treeNode.isExpanded">
+        <div-tree  *ngFor="let child of treeNode.children" [treeNode]="child" ></div-tree>
+    </div>
+</div>

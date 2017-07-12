@@ -1,0 +1,20 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div>
+  <h3 class="block-title"> Location Tree</h3>
+  <!--button (click)="callDebugger()">Call Debugger Window</button>
+  <br/><br/ -->
+
+<table><tr><td style="vertical-align: top">
+
+  <div style="max-height: 350px; width: 250px; min-height: 100px; overflow-y : auto; border: 1px black solid">
+    <div-tree [treeNode]="rootNode" [showRoot]="false"></div-tree>
+  </div> 
+
+</td><td sytle="width:50px" width="50px"></td><td style="vertical-align: top">
+
+  <div style="max-height: 350px; min-height: 100px;  overflow-y: auto; width: 600px">
+    <grid-tree [rootNode]="rootNode" [showRoot]="true" [columns]="columnDefinition"></grid-tree>
+  </div>
+
+</td></tr></table>
+</div>

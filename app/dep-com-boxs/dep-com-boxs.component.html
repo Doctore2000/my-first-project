@@ -1,0 +1,58 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div>
+  <h3 class="block-title"> Depended ComboBoxes</h3>
+
+  <div>
+    <input class="ng-model" readonly value="{{filter.country ? filter.country.name : '-- NULL --'}}">
+    <input class="ng-model" readonly value="{{filter.state ? filter.state.name : '-- NULL --'}}">
+    <input class="ng-model" readonly value="{{filter.city ? filter.city.name : '-- NULL --'}}">
+    <div class="checkbox">
+      <label for="subscribeNews">With Empty Row:</label>
+      <input type="checkbox" [(ngModel)]="withEmptyRow" (ngModelChange)="reload()">  
+    <div>
+  </div>
+
+  <div>
+    <button class="ng-model" (click)="filter.countrySelection=null; filterCountryChanged()">Set Null</button>
+    <button class="ng-model" (click)="filter.stateSelection=null; filterStateChanged()">Set Null</button>
+    <button class="ng-model" (click)="filter.citySelection=null; filterCityChanged()">Set Null</button>
+  </div>
+
+  <br/>
+
+  <select class="country" [(ngModel)]="filter.country" (ngModelChange)="filterCountryChanged()" #selCntry>
+    <option *ngIf="withEmptyRow" [ngValue]="null">-- null --</option>
+    <option *ngFor="let country of list.countries" [ngValue]="country">{{country.name}}</option>
+  </select>
+
+  <select class="state" [(ngModel)]="filter.state" (change)="filterStateChanged()" #selStete>
+    <option *ngIf="withEmptyRow" [ngValue]="null">-- null --</option>
+    <option *ngFor="let state of list.states" [ngValue]="state">{{state.name}}</option>
+  </select>
+
+  <select class="city" [(ngModel)]="filter.city" (ngModelChange)="filterCityChanged" #selCity>
+    <option *ngIf="withEmptyRow" [ngValue]="null">-- null --</option>
+    <option *ngFor="let city of list.cities" [ngValue]="city">{{city.name}}</option>
+  </select>
+
+  <button (click)="callDebugger()">Call Debugger Window</button>
+
+  <br/><br/>
+
+  <table cellpading="2px" class="locationTable" >
+    <tr>
+      <th>Location</th><th>ID</th>
+    </tr>
+    <ng-template let-country ngFor [ngForOf]="list.countries">
+      <tr><td class='cildLication'>{{country.name}}</td><td>{{country.id}}</td></tr>
+
+      <ng-template let-state ngFor [ngForOf]="list.states">
+        <tr *ngIf="state.country == country.id"><td class='stateName'>{{state.name}}</td><td>{{state.id}}</td></tr>
+
+        <ng-template let-city ngFor [ngForOf]="list.cities">
+          <tr *ngIf="state.country == country.id && city.state == state.id"><td class='cityName'>{{city.name}}</td><td>{{city.id}}</td></tr>
+        </ng-template>
+      </ng-template>
+    </ng-template>
+  </table>  
+</div>
